@@ -3,13 +3,16 @@ from pymongo import MongoClient
 import requests
 
 app = Flask(__name__)
-c = MongoClient('localhost:27017')
+c = MongoClient('172.17.0.3',27017)
 
 @app.route("/", methods=["POST"])
 def handleRequest():
     text = request.form['text']
+    user = request.form['user']
+    sessionId = request.form['sessionId']
+    print(user)
     response = discriminate(text)
-    c.convos.insert({'request':text, 'response': response})
+    c.skilldata.msgs.insert({'request':text, 'response': response, 'session':sessionId, 'user': user})
     return response
 
 def discriminate(text):
