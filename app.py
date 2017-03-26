@@ -37,7 +37,7 @@ def discriminate(text):
           grequests.get('http://107.22.159.20', params={'q': text} )
         ]
         aiml_res, goog_res = grequests.map(reqs)
-        if goog_res and goog_res.text != 'Hello' and goog_res.text != 'Query not found':
+        if goog_res and goog_res.text != "" and goog_res.text != 'Hello' and goog_res.text != 'Query not found':
             return goog_res.text
         elif aiml_res:
             return aiml_res.text
