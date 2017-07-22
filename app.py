@@ -60,6 +60,7 @@ def letsChat(text):
 
 def letsChatAbout(text):
     return "let's chat about" in text and text.split("let's chat about")[-1]
+
 if __name__ == '__main__':
     app.run(debug=True, host="0.0.0.0", port=80)
     
